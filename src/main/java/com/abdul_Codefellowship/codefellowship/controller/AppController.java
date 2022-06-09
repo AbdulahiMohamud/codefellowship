@@ -45,7 +45,7 @@ public class AppController  {
 
         authWithHttpServletRequest(username, password);
 
-        return new RedirectView("/");
+        return new RedirectView("/login");
     }
 
     public void authWithHttpServletRequest(String username, String password)

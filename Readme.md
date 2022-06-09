@@ -25,4 +25,6 @@ Your Controller should have an @Autowired private PasswordEncoder passwordEncode
 Time estimated spent: 2 hours
 Actual time spent: 3 hours
 ****
+Time estimated spent: 3 hours
+Actual time spent: 5.30 hours
 

@@ -1,25 +1,31 @@
 package com.abdul_Codefellowship.codefellowship.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 public class AppUser implements UserDetails {
 
     @Id@GeneratedValue(strategy = GenerationType.AUTO) private Long id;
+    @Column (unique = true)
+
     private String username;
     private  String password;
     private String firstName;
     private String lastName;
     private String dateOfBirth;
     private String bio;
+
+
+
+    @OneToMany(mappedBy = "userPosts", cascade = CascadeType.ALL)
+    @OrderBy("text")
+    List<Post> postList;
 
 
 
@@ -106,5 +112,21 @@ public class AppUser implements UserDetails {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Post> getPostList() {
+        return postList;
+    }
+
+    public void setPostList(List<Post> postList) {
+        this.postList = postList;
     }
 }
