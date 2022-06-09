@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/fragments/nav-header"/>
+
+<img src="/img/default-profile.png"/>
+<ul>
+    <li th:text="${user.firstName + ' ' + user.lastName}"></li>
+    <br>
+    <li th:text="${user.dateOfBirth}"></li>
+    <br>
+    <li th:text="${user.bio}"></li>
+
+</ul>
+<form action="/add-post" method="post">
+    <fieldset>
+        <legend>Make A Post!</legend>
+        <label for="text">Text</label>
+        <input type="text" name="text" id="text" >
+
+        <input type="submit" value="Submit Post">
+    </fieldset>
+</form>
+
+
+<h1>Posts</h1>
+
+<ul th:each="post : ${posts}">
+    <li th:text="${post.text + ' '+ post.createdAt}"></li>
+</ul>
+
+
+
+
+<br>
+</body>
+</html>
